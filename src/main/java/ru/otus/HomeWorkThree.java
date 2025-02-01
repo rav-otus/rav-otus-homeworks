@@ -6,7 +6,8 @@ public class HomeWorkThree {
     public static void main(String[] args) {
         int squareSize = 5;
         int[][] arr = new int[][]{{1, 2, 3, 4}, {5, 8, -5, -9}, {7, 6, -5, 4}, {1, 2, 3, 4}};
-        int[][] arrWithoutSecondRow = new int[][]{{1, 2, 3, 4}, null};
+        int[][] arrWithoutSecondRow = new int[][]{{1, 2, 3, 4}};
+        int[][] arrWithSecondRow = new int[][]{{1, 2, 3, 4}, {5 ,6, 7, 2}};
 
         System.out.println("Сумма положительных элементов равна: " + sumOfPositiveElements(arr));
         squareFromStar(squareSize);
@@ -14,7 +15,8 @@ public class HomeWorkThree {
         System.out.println();
         System.out.println("Максимальный элемент массива равен: " + findMax(arr));
         System.out.println();
-        System.out.println("Сумма элементов второй строки массива: " + sumOfSecondRow(arrWithoutSecondRow));
+        System.out.println("Сумма элементов второй строки массива, у которого только одна строка: " + sumOfSecondRow(arrWithoutSecondRow));
+        System.out.println("Сумма элементов второй строки массива, у которого две строки " + sumOfSecondRow(arrWithSecondRow));
     }
 
     public static int sumOfPositiveElements(int[][] array) {
@@ -40,29 +42,21 @@ public class HomeWorkThree {
     }
 
     public static void zeroDiagArray(int[][] array) {
-        int[][] tmpArray;
-        int countOfRow = array.length;
-        int countOfColumn = 0;
-        for (int i = 0; i < array.length; i++) {
-            countOfColumn = Math.max(countOfColumn, array[i].length);
-        }
-
-        tmpArray = new int[countOfRow][countOfColumn];
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 if (i == j || j == array[i].length - i - 1) {
-                    tmpArray[i][j] = 0;
+                    array[i][j] = 0;
                 } else {
-                    tmpArray[i][j] = array[i][j];
+                    array[i][j] = array[i][j];
                 }
             }
         }
 
         System.out.println("Массив с обнулёнными диагоналями:");
 
-        for (int i = 0; i < tmpArray.length; i++) {
-            for (int j = 0; j < tmpArray[i].length; j++) {
-                System.out.print(tmpArray[i][j] + " ");
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.print(array[i][j] + " ");
             }
             System.out.println();
         }
@@ -80,7 +74,7 @@ public class HomeWorkThree {
 
     public static int sumOfSecondRow(int[][] array) {
         int sum = 0;
-        if (array[1] == null) {
+        if (array.length == 1) {
             return -1;
         }
         for (int i = 0; i < array[1].length; i++) {
