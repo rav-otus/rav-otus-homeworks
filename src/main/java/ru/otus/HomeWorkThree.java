@@ -74,7 +74,7 @@ public class HomeWorkThree {
 
     public static int sumOfSecondRow(int[][] array) {
         int sum = 0;
-        if (array.length == 1) {
+        if (array.length < 2) {
             return -1;
         }
         for (int i = 0; i < array[1].length; i++) {
