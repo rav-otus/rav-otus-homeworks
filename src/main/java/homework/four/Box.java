@@ -59,7 +59,7 @@ public class Box {
             this.element = null;
             System.out.println("Предмет " + deletedElement + " удален из коробки");
         }else {
-            System.out.println("В коробке уже есть предмет");
+            System.out.println("Удалять нечего, так как коробка пуста");
         }
     }
 

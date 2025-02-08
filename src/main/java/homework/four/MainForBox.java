@@ -17,6 +17,7 @@ public class MainForBox {
         box1.info();
         box1.open();
         box1.deleteElement();
+        box1.deleteElement();
         box1.info();
         box1.changeColour("Blue");
         box1.addElement("Picture");
