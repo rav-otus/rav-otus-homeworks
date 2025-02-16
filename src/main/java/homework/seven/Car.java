@@ -1,0 +1,20 @@
+package homework.seven;
+
+public class Car extends  Transport implements Motion{
+    private int fuel;
+
+    public Car(int fuel){
+        this.fuel = fuel;
+    }
+
+    @Override
+    public boolean move(Terrain terrain, int distance){
+        if(terrain==Terrain.DENSE_FOREST || terrain==Terrain.SWAMP || fuel - distance<0){
+            System.out.println("Проехать не получится");
+            return false;
+        }
+        fuel -= distance;
+        System.out.println("Поездка удачна. У машины осталось топлива: "+fuel);
+        return true;
+    }
+}
