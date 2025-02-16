@@ -10,7 +10,8 @@ public class Plate {
     }
 
     public void addFood(int food){
-        this.currentFood = Math.min(food,maxFood);
+        this.currentFood += Math.min(food,maxFood);
+        System.out.println("В тарелке "+currentFood+ " еды");
     }
 
     public boolean decreaseFood(int food){

@@ -16,6 +16,8 @@ public class Main {
 
         plate.addFood(20);
 
+        cats[2].eat(plate);
+
         for(int i=0;i<cats.length;i++){
             cats[i].state();
         }
