@@ -1,6 +1,6 @@
 package homework.seven;
 
-public class Horse extends Transport implements Motion {
+public class Horse implements Motion {
     int strength;
 
     public Horse(int strength){
@@ -10,7 +10,7 @@ public class Horse extends Transport implements Motion {
     @Override
     public boolean move(Terrain terrain, int distance){
         if (terrain == Terrain.SWAMP || strength-distance<0){
-            System.out.println("Воспользоваться транспортом не получится");
+            System.out.println("Проехать на лошади не получится");
             return false;
         }
         strength -= distance;

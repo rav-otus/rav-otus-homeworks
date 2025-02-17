@@ -1,6 +1,6 @@
 package homework.seven;
 
-public class Rover extends Transport implements Motion{
+public class Rover implements Motion{
     int fuel;
 
     public Rover(int fuel){

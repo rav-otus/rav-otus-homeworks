@@ -1,14 +1,26 @@
 package homework.seven;
 
 public class Person implements Motion{
-    String name;
-    int strength;
-    Transport currentTransport;
+    private String name;
+    private int strength;
+    private Motion currentTransport;
 
     public Person(String name, int strength){
         this.name = name;
         this.strength = strength;
         this.currentTransport = null;
+    }
+
+    public void setCurrentTransport(Motion currentTransport) {
+        this.currentTransport = currentTransport;
+    }
+
+    public int getStrength(){
+        return strength;
+    }
+
+    public String getName(){
+        return name;
     }
 
     @Override
