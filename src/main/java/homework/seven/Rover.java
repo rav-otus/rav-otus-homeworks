@@ -1,10 +1,10 @@
 package homework.seven;
 
 public class Rover implements Motion{
-    int fuel;
+    private int fuel;
 
     public Rover(int fuel){
-        this.fuel = fuel;
+        this.fuel = fuel >= 0 ? fuel : Math.abs(fuel);
     }
 
     @Override
