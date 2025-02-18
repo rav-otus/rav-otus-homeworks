@@ -1,9 +1,9 @@
-package homework.six;
+package ru.otus.homeworksix.oop;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Plate plate;
-        Cat [] cats = new Cat[3];
+        Cat[] cats = new Cat[3];
 
         plate = new Plate(100);
         cats[0] = new Cat("Барсик", 10);
@@ -18,8 +18,8 @@ public class Main {
 
         cats[2].eat(plate);
 
-        for(int i=0;i<cats.length;i++){
-            cats[i].state();
+        for (int i = 0; i < cats.length; i++) {
+            cats[i].printState();
         }
     }
 }
