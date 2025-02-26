@@ -4,9 +4,9 @@ public class Main {
     public static void main(String[] args) {
         String[][] arr = new String[4][4];
         int sumarr = 0;
-        arr[0] = new String[]{"1", "8", "90", "10"};
-        arr[1] = new String[]{"12", "4", "9", "1"};
-        arr[2] = new String[]{"1", "2h", "30", "40"};
+        arr[0] = new String[]{"1", "5", "3", "1"};
+        arr[1] = new String[]{"12", "4", "9", "5"};
+        arr[2] = new String[]{"1", "2", "30", "47"};
         arr[3] = new String[]{"10", "25", "35", "50"};
 
         try {
@@ -19,9 +19,7 @@ public class Main {
             sumarr = -1;
         }
 
-        if (sumarr == -1) {
-            System.out.println("Не удалось посчитать сумму элементов массива");
-        } else {
+        if (sumarr != -1) {
             System.out.println("Сумма элементов массива = " + sumarr);
         }
     }
@@ -37,7 +35,7 @@ public class Main {
                 char[] chararray = array[i][j].toCharArray();
                 for (int k = 0; k < chararray.length; k++) {
                     if ((int) chararray[k] < 48 || (int) chararray[k] > 57) {
-                        throw new AppArrayDataException("В строке " + i + " столбце " + j + " лежит строка, а не число");
+                        throw new AppArrayDataException("В строке " + i + " столбце " + j + " лежит не число");
                     }
                 }
                 sum += Integer.parseInt(array[i][j]);
