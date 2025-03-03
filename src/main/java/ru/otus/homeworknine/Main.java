@@ -15,14 +15,17 @@ public class Main {
         Employees.add(new Employee("Mark", 57));
 
         list = range(min, max);
-        System.out.println("Сумма элементов списка, которые больше 5 равна " + sumlist(list));
+        System.out.println("Список: " + list);
+        System.out.println("Сумма элементов списка, которые больше 5 равна: " + sumlist(list));
         replaceInList(1, list);
+        System.out.println("Список после замены: " + list);
         incremInList(20, list);
+        System.out.println("Список после увеличения: " + list);
         System.out.println("Список имен сотрудников: " + listName(Employees));
         emplOlderThanArg = listMoreOldEmpl(Employees, 30);
         isAverageAgeMoreMin(Employees, 30);
         Employee youngestEmployee = youngestEmployee(Employees);
-        System.out.println("Самый молодой сотрудник: " + youngestEmployee.getName() + "возрастом " + youngestEmployee.getAge());
+        System.out.println("Самый молодой сотрудник: " + youngestEmployee.getName() + " возрастом " + youngestEmployee.getAge());
 
     }
 
@@ -36,6 +39,10 @@ public class Main {
 
     public static int sumlist(ArrayList<Integer> list) {
         int sum = 0;
+        if (list.isEmpty()) {
+            System.out.println("Входящий список пуст");
+            return -1;
+        }
         for (int i : list) {
             if (i > 5) {
                 sum += i;
@@ -98,14 +105,14 @@ public class Main {
             return false;
         }
         if (minAverageAge <= 0) {
-            System.out.println("Минимальный средний возраст должен быть боьше нуля");
+            System.out.println("Минимальный средний возраст должен быть больше нуля");
             return false;
         }
         for (Employee emp : list) {
             sumAge += emp.getAge();
         }
         isAverageageMoreMin = sumAge / list.size() > minAverageAge ? true : false;
-        System.out.println("Средний возраст сотрудников превышает указанный возраст: " + isAverageageMoreMin);
+        System.out.println("Средний возраст сотрудников превышает " + minAverageAge + " : " + isAverageageMoreMin);
         return isAverageageMoreMin;
     }
 
