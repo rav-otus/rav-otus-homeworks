@@ -11,6 +11,14 @@ public class Person {
         this.id = id;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public Position getPosition(){
+        return position;
+    }
+
     @Override
     public int hashCode() {
         return super.hashCode();
