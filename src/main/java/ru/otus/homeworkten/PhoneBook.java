@@ -10,6 +10,9 @@ public class PhoneBook {
     }
 
     public void add(String fio, String phone) {
+         if(fio==null || phone == null){
+             throw new IllegalArgumentException("ФИО и телефон не могут быть null");
+         }
         if (fioPhones.containsKey(fio)) {
             HashSet<String> phones = fioPhones.get(fio);
             if (!phones.contains(phone)) {
