@@ -21,7 +21,7 @@ public class Main {
             System.out.println("Каталог " + rootFolder + " пуст.");
             return;
         }
-        System.out.println("Каталог " + rootFolder + " содержит файлы:");
+        System.out.println("Папка " + rootFolder + " содержит файлы:");
         for (File file : fileList.listFiles(filter)) {
             System.out.println(file.getName());
         }
