@@ -15,7 +15,7 @@ public class Main {
                 return false;
             }
         };
-        String rootFolder = "C:\\Users\\MSI\\IdeaProjects\\rav-otus-homeworks";
+        String rootFolder = System.getProperty("user.dir");
         File fileList = new File(rootFolder);
         if (fileList.listFiles(filter).length == 0) {
             System.out.println("Каталог " + rootFolder + " пуст.");
