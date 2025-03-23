@@ -11,13 +11,21 @@ public class Client implements AutoCloseable {
         this.output = new DataOutputStream(output);
     }
 
+    public DataInputStream getInput() {
+        return input;
+    }
+
+    public DataOutputStream getOutput() {
+        return output;
+    }
+
     public void send(String message) throws IOException {
         output.writeUTF(message);
         output.flush();
         try{
             String result = input.readUTF();
             System.out.println("Результат: "+result);
-        } catch(EOFException){
+        } catch(EOFException eof){
             System.out.println("Сервер закрыл соединение");
         }
     }

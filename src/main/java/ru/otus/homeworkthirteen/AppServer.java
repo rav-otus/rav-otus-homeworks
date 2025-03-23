@@ -8,7 +8,7 @@ import java.net.Socket;
 
 public class AppServer {
     public static void main(String[] args) throws IOException {
-        ServerSocket server = new ServerSocket(9090);
+        ServerSocket server = new ServerSocket(8080);
 
         while(true){
             Socket client = server.accept();
@@ -17,11 +17,12 @@ public class AppServer {
 
             output.writeUTF("Список доступных операций: +, -, *, /");
             String clientInput = input.readUTF();
-
-
+            String result = calculate(clientInput.toString());
+            output.writeUTF(result);
         }
+    }
 
-        String str = "14+378";
+    public static String calculate(String str){
         String operand1 = "";
         String operand2 = "";
         float result;
@@ -32,20 +33,24 @@ public class AppServer {
             i++;
         }
         char operation = array[i];
-
-        System.out.println(" "+ operand1+ " "+ operation+ " "+(int)operation);
+        if(operand1.length()==0){
+            return "Первый операнд должен быть числом";
+        }
+        //System.out.println(" "+ operand1+ " "+ operation+ " "+(int)operation);
         //if(i==array.length-1){
         //    return;
         //}
         if(((int)operation) != 42 && ((int)operation) != 43 && ((int)operation) != 45 && ((int)operation) != 47)
         {
-            return;
+            return "Операция некорректна";
         }
         System.out.println(" "+i);
         i++;
+        System.out.println(" "+i);
         while(i<array.length){
             if(((int)array[i])<48 && ((int)array[i])>57){
-                break;
+                //break;
+                return "Второй операнд должен быть числом";
             }
             operand2 +=  array[i];
             i++;
@@ -54,11 +59,11 @@ public class AppServer {
         System.out.println(" "+i);
         System.out.println(" "+ operand1+ " "+ operation+" "+ operand2);
 
-        if(i!=array.length-1){
-            return;
+        if(i!=array.length){
+            return "Второй операнд должен быть числом";
         }
-        float oper1 = Integer.getInteger(operand1);
-        float oper2 = Integer.getInteger(operand2);
+        float oper1 = Float.valueOf(operand1);
+        float oper2 = Float.valueOf(operand2);
 
         if(operation=='+'){
             result = oper1 + oper2;
@@ -69,14 +74,7 @@ public class AppServer {
         } else{
             result = oper1 / oper2;
         }
-        /*int result = switch (operation){
-            case operation =='+' : 1;
-            case operation=='-' : 2;
-            case operation=='*' : 3;
-            case operation=='/' : 4;
-        };*/
-        //for(int i=0; i<array.length;i++){
-       //     if((int)array[i++]>=0 && (int)array[i++]<=9)
-       System.out.println("Result = "+ operand1 + " "+ operand2);
+
+        return String.valueOf(result);
     }
 }
