@@ -23,12 +23,13 @@ public class Main {
 
     public static double[] createArrayMultiThread(int size) {
         double[] array = new double[size];
-        long timeBegin = System.currentTimeMillis();
+        long timeBegin = System.nanoTime();
 
-        MyThread thread1 = new MyThread(array, 0, (int) (size / 4 - 1));
-        MyThread thread2 = new MyThread(array, (int) (size / 4), (int) (size / 2 - 1));
-        MyThread thread3 = new MyThread(array, (int) (size / 2), (int) (3 * size / 4 - 1));
-        MyThread thread4 = new MyThread(array, (int) (3 * size / 4), size - 1);
+        int quarter = size / 4;
+        MyThread thread1 = new MyThread(array, 0, quarter - 1);
+        MyThread thread2 = new MyThread(array, quarter, 2 * quarter - 1);
+        MyThread thread3 = new MyThread(array, 2 * quarter, 3 * quarter - 1);
+        MyThread thread4 = new MyThread(array, 3 * quarter, size - 1);
 
         thread1.start();
         thread2.start();
@@ -44,7 +45,7 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-        long timeEnd = System.currentTimeMillis();
+        long timeEnd = System.nanoTime();
 
         System.out.println("Время выполнения в четырёх потоках: " + (timeEnd - timeBegin));
         return array;
